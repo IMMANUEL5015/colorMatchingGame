@@ -1,5 +1,3 @@
-var numOfSquares = 6;
-
 //Select the necessary html elements
 var h1 = document.getElementsByTagName("h1")[0];
 var colorDisplay = document.getElementById("colorDisplay");
@@ -7,7 +5,11 @@ var resetButton = document.querySelector("#reset");
 var messageDisplay = document.getElementById("message");
 var squares = document.querySelectorAll(".square");
 var modeButtons = document.getElementsByClassName("mode");
+var player = document.getElementById("playerName");
+var submit = document.querySelector("h1 button");
 
+var numOfSquares = 6;
+var playerName = "";
 //Initializing the game
 init();
 
@@ -48,7 +50,7 @@ function pickColor(){
 var pickedColor;
 
 //Declare the function for resetting the game
-function reset(){
+function reset(){ 
     colors = generateRandomColors(numOfSquares);
     pickedColor = pickColor();
     colorDisplay.textContent = pickedColor;
@@ -100,19 +102,26 @@ function setUpSquares(){
         squares[i].addEventListener("click", function(){
             var clickedColor = this.style.backgroundColor;
             if(clickedColor === pickedColor){
-                messageDisplay.textContent = "Correct!";
+                messageDisplay.textContent = "Correct " +  playerName + "!";
                 resetButton.textContent = "Play Again!";
                 changeColors(clickedColor);
                 h1.style.backgroundColor = clickedColor;
             }else{
                 this.style.backgroundColor = "#232323";
-                messageDisplay.textContent = "Try Again!";
+                messageDisplay.textContent = "Try Again " +  playerName + "!";
             }
         });
     }   
 }
 
 
+//When player's name changes
+submit.addEventListener("click", function(){
+    if(player.value !== playerName){
+        playerName = player.value;
+        reset();
+    }    
+});
 
 
 

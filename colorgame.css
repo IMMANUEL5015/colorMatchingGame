@@ -16,13 +16,17 @@ h1{
 #colorDisplay{
     font-size: 170%;
 }
+#playerFirstName{
+    margin-top: 20px;
+    text-transform: capitalize;
+}
 #stripe{
     background: white;
     height: 30px;
     text-align:center;
     color: black;
 }
-button{
+#stripe button{
     border: none;
     background: none;
     text-transform: uppercase;
@@ -38,7 +42,8 @@ button{
 }
 #message{
     display: inline-block;
-    width: 20%;
+    color: steelblue;
+    font-weight: 700;
 }
 .selected{
     color: white;
@@ -62,20 +67,20 @@ button{
     -moz-transition: background-color 0.6s;
 }
 
-button:hover{
+#stripe button:hover{
     color: white;
     background: steelblue;
 }
 
-@media screen and (max-width: 450px){
+@media screen and (max-width: 499px){
     #colorDisplay{
         font-size: 120%;
     }
     #stripe{
         display: grid;
-        grid-template-columns: 1fr 20% 1fr 1fr;
-        height: 40px;
-        grid-gap: 10px;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        height: auto;
+        grid-gap: 2px;
     }
     #message{
         margin-top: auto;
