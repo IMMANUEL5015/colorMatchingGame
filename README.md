@@ -7,3 +7,6 @@ Click [here](https://immanuel5015.github.io/colorMatchingGame/colorgame.html) to
 
 ## Notice
 For optimal performance, use the chrome browser.
+
+This game requires the player to have a basic understanding of the RGB color system.
+VIsit this [website](https://www.w3schools.com/css/css_colors.asp) to learn the basics of the RGB Color Model.
