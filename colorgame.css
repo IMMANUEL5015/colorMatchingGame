@@ -18,6 +18,7 @@ h1{
 }
 #colorDisplay{
     font-size: 170%;
+    margin-top: 15px;
 }
 #playerFirstName{
     margin-top: 20px;
@@ -48,7 +49,7 @@ h1{
     color: steelblue;
     font-weight: 700;
 }
-.selected{
+#stripe .selected{
     color: white;
     background: steelblue;
 }
@@ -75,15 +76,15 @@ h1{
     background: steelblue;
 }
 
-@media screen and (max-width: 499px){
+@media screen and (max-width: 545px){
     #colorDisplay{
         font-size: 120%;
     }
     #stripe{
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-columns: repeat(3, 1fr);
         height: auto;
-        grid-gap: 2px;
+        grid-gap: 5px;
     }
     #message{
         margin-top: auto;

@@ -99,7 +99,7 @@ resetButton.addEventListener("click", function(){
     reset();
 });
 
-//Game Modes (Easy and/or Hard)
+//Game Modes (Easy, Medium and Hard)
 function setUpModes(){
     for(var i = 0; i < modeButtons.length; i++){
         modeButtons[i].addEventListener("click", function(){
@@ -107,7 +107,13 @@ function setUpModes(){
                 modeButtons[a].classList.remove("selected");
             }
             this.classList.add("selected");
-            this.textContent === "Easy" ? numOfSquares = 3 : numOfSquares = 6;
+            if(this.textContent === 'Easy'){
+                numOfSquares = 3;
+            }else if(this.textContent === 'Medium'){
+                numOfSquares = 6;
+            }else{
+                numOfSquares = 9;
+            }
             reset();
         });
     }
