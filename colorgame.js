@@ -19,20 +19,46 @@ function init(){
     reset();
 }
 
-//Generate a Random Color
-function randomColor(){
-    var r = Math.floor(Math.random() * 256);
-    var g = Math.floor(Math.random() * 256);
-    var b = Math.floor(Math.random() * 256);
-    var result = "rgb(" + r + ", " + g + ", " + b + ")";
+//Convert Number to String
+function numToStr(num){
+    var result =  ''+ num + '';
     return result;
 }
+
+//Generate Random Number and convert it to string
+function genRandomNum(){
+    var result = numToStr(Math.floor(Math.random() * 16));
+    if(result === '10'){
+        return 'a';
+    }else if(result === '11'){
+        return 'b';
+    }else if(result === '12'){
+        return 'c';
+    }else if(result === '13'){
+        return 'd';
+    }else if(result === '14'){
+        return 'e';
+    }else if(result === '15'){
+        return 'f';
+    }
+    return result;
+}
+
+//Generate the Hex color value
+function genRandomHexColor(){
+    var red = genRandomNum() + genRandomNum(); 
+    var green = genRandomNum() + genRandomNum();
+    var blue = genRandomNum() + genRandomNum();
+    var randomHexValue = '#' + red + green + blue;
+    return randomHexValue;
+}
+
 
 //Generate the Six Random Colors
 function generateRandomColors(num){
     var arr = [];
     for(var i = 1; i <= num; i++){
-        arr.push(randomColor());
+        arr.push(genRandomHexColor());
     }
     return arr;
 }
@@ -57,7 +83,8 @@ function reset(){
     for(var i = 0; i < squares.length; i++){
         if(colors[i]){
             squares[i].style.display = "block";
-            squares[i].style.backgroundColor = colors[i];
+            var hexColor = "background-color: " + colors[i];
+            squares[i].setAttribute("style", hexColor);
         }else{
             squares[i].style.display = "none";
         }
@@ -100,7 +127,8 @@ function setUpSquares(){
     for(var i = 0; i < squares.length; i++){
         //Check if the player guessed the color rightly or wrongly
         squares[i].addEventListener("click", function(){
-            var clickedColor = this.style.backgroundColor;
+            var hexColor = this.getAttribute("style");
+            var clickedColor =  hexColor.slice(18);
             if(clickedColor === pickedColor){
                 messageDisplay.textContent = "Correct " +  playerName + "!";
                 resetButton.textContent = "Play Again!";
@@ -122,7 +150,3 @@ submit.addEventListener("click", function(){
         reset();
     }    
 });
-
-
-
-
